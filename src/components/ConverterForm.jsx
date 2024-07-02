@@ -16,8 +16,9 @@ const ConverterForm = () => {
 
     // Function to fetch the exchange rate and update the result
     const getExchangeRate = async () => {
-        const API_KEY = "";
-        const API_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${fromCurrency}/${toCurrency}`;
+        // Import the Exchange Rate Api key (For more info: https://www.exchangerate-api.com/)
+        const EXCHANGE_RATE_API_KEY = import.meta.env.VITE_EXCHANGE_RATE_API_KEY; 
+        const API_URL = `https://v6.exchangerate-api.com/v6/${EXCHANGE_RATE_API_KEY}/pair/${fromCurrency}/${toCurrency}`;
 
         if (isLoading) return;
         setIsLoading(true);
@@ -27,7 +28,8 @@ const ConverterForm = () => {
             if (!response.ok) throw Error("Something went wrong!");
 
             const data = await response.json();
-            console.log(data);
+            //Output the json data to the console
+            // console.log(data);
             const rate = (data.conversion_rate * amount).toFixed(2);
             setResult(`${amount} ${fromCurrency} = ${rate} ${toCurrency}`);
         } catch (error) {
