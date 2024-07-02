@@ -1,5 +1,5 @@
 # Currency Converter
 
-A currency converter where users can input any amount and choose the currencies for conversion.
+A currency converter web application where users can input any amount and choose the currencies for conversion.
 
 
